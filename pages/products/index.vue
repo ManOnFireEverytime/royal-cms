@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center products-search">
         <input type="text" placeholder="Search here" v-model="searchQuery" />
         <NuxtLink :to="{ name: 'products-AddProduct' }" class="btn-link">
-          <button class="d-flex ms-3 product-search-add">
+          <button class="d-flex  product-search-add">
             <p class="me-2">Add Product</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"

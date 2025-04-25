@@ -1,6 +1,9 @@
 <template>
   <div class="relative nav-container">
     <nav>
+      <button class="hamburger" @click="">
+        Sidenav
+      </button>
       <div class="nav">
         <div class="left">
           <h6 class="welcome">Hi, {{ username }}</h6>
