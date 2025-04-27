@@ -3,9 +3,9 @@
     <!-- Header -->
     <div class="header d-flex justify-content-between align-items-center">
       <h5>Categories</h5>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center category-add">
         <NuxtLink :to="{ name: 'categories-AddCategory' }">
-          <button class="d-flex ms-3">
+          <button class="d-flex ">
             <p class="me-2">Add Category</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -317,5 +317,22 @@ const emit = defineEmits(["category-selected"]);
 .categories-table .btn-outline-primary:hover,
 .categories-table .btn-outline-danger:hover {
   transform: scale(1.05);
+}
+
+.text-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px
+}
+.category-add {
+  width: 100% !important;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+.header {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column;
 }
 </style>
