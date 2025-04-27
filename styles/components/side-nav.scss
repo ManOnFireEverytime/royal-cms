@@ -27,6 +27,7 @@ aside {
             // display: flex;
             // border: px solid #008000
 
+
             &.show {
                 display: flex;
             }
@@ -37,6 +38,9 @@ aside {
 aside.show {
     @include media('<phone') {
         display: flex;
+        overflow-y: hidden;
+        height: 100vh;
+        z-index: 9999;
     }
 }
 

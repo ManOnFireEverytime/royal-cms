@@ -12,8 +12,15 @@
     display: none;
     @media screen and (max-width: 767px) {
         display: block;
-        position: absolute;
+            position: absolute !important;
         top: 20px;
+        @media screen and (max-width: 500px) {
+            position: absolute !important;
+            // border: 1px solid red !important;
+            background-color: $color-purple !important;
+            color: $color-white !important;
+            padding: 10px !important;
+        }
     }
 }
 nav {

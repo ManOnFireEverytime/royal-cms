@@ -1,9 +1,7 @@
 <template>
   <div class="relative nav-container">
     <nav>
-      <button class="hamburger" @click="">
-        Sidenav
-      </button>
+      <button class="hamburger " @click="toggleSideNav">Side Panel</button>
       <div class="nav">
         <div class="left">
           <h6 class="welcome">Hi, {{ username }}</h6>
@@ -96,14 +94,41 @@ export default {
     getUsernameFromToken() {
       const token = sessionStorage.getItem("token");
       const username = sessionStorage.getItem("username");
-      // Set the username from storage to the data property
       if (username) {
         this.username = username;
       } else {
-        // Handle case when username is not in storage
         this.username = "Guest";
       }
+    },
+    toggleSideNav() {
+      this.$emit("toggle-side-nav");
     },
   },
 };
 </script>
+
+<style scoped>
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  color: #374957;
+
+  @media screen and (max-width: 500px) {
+    display: block;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+  }
+}
+
+.nav {
+  @media screen and (max-width: 500px) {
+    margin-left: 50px;
+  }
+}
+</style>

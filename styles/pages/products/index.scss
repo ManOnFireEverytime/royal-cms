@@ -87,10 +87,17 @@
             display: flex;;
             // gap: 10px;
             .card-container {
+                        // max-width: 100%;
                 min-width: 250px;
                 // gap:10px;
                 @media screen and (max-width: 500px) {
                     // width: 170px
+                    justify-content: center;
+                    align-items: center;
+                    // border: 1px solid red;
+                    margin-inline: auto;;
+                    width: 90%;
+
                 }
                 .card {
                     margin-top: 24px;
@@ -99,6 +106,10 @@
                     // width: 30%;
                     @media (max-width: 1024px) {
                         width: 250px;
+                        // max-width: 90%;
+                        @media screen and (max-width: 500px)  {
+                            width: 100%
+                        }
                     }
                     
                     .card__content {
