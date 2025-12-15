@@ -27,7 +27,7 @@ export default {
       try {
         const email = new URLSearchParams(window.location.search).get("email");
         const response = await fetch(
-          "https://backend.royalgangchambers.com/verify.php",
+          "https://backend.royalgangchamber.com/verify.php",
           {
             method: "POST",
             headers: {

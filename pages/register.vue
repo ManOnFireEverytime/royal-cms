@@ -47,7 +47,7 @@ export default {
 
       try {
         const response = await fetch(
-          "https://backend.royalgangchambers.com/signup-logic.php",
+          "https://backend.royalgangchamber.com/signup-logic.php",
           {
             method: "POST",
             headers: {

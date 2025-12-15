@@ -226,7 +226,7 @@ const images = ref(["", "", "", ""]);
 const fetchCategories = async () => {
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/getCategories.php"
+      "https://backend.royalgangchamber.com/getCategories.php"
     );
     const result = await response.json();
     if (result.status === "success") {
@@ -286,7 +286,7 @@ const submitProduct = async () => {
 
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/addProduct.php",
+      "https://backend.royalgangchamber.com/addProduct.php",
       {
         method: "POST",
         headers: {

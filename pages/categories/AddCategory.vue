@@ -43,7 +43,7 @@ const submitCategory = async () => {
 
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/addCategory.php",
+      "https://backend.royalgangchamber.com/addCategory.php",
       {
         method: "POST",
         headers: {

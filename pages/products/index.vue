@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center products-search">
         <input type="text" placeholder="Search here" v-model="searchQuery" />
         <NuxtLink :to="{ name: 'products-AddProduct' }" class="btn-link">
-          <button class="d-flex  product-search-add">
+          <button class="d-flex product-search-add">
             <p class="me-2">Add Product</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@
       >
         <div class="card">
           <img
-            :src="`https://backend.royalgangchambers.com/products/${product.image1}`"
+            :src="`https://backend.royalgangchamber.com/products/${product.image1}`"
             alt="card image"
             class="card-img"
           />
@@ -106,7 +106,7 @@ const searchQuery = ref("");
 const fetchAllProducts = async () => {
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/getAllProducts.php"
+      "https://backend.royalgangchamber.com/getAllProducts.php"
     );
     const result = await response.json();
     if (result.status === "success") {
@@ -123,7 +123,7 @@ const fetchAllProducts = async () => {
 const fetchProductsByCategory = async (categoryId) => {
   try {
     const response = await fetch(
-      `https://backend.royalgangchambers.com/getProducts.php?category=${categoryId}`
+      `https://backend.royalgangchamber.com/getProducts.php?category=${categoryId}`
     );
     const result = await response.json();
     if (result.status === "success") {
@@ -140,7 +140,7 @@ const fetchProductsByCategory = async (categoryId) => {
 const fetchCategories = async () => {
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/getCategories.php"
+      "https://backend.royalgangchamber.com/getCategories.php"
     );
     const result = await response.json();
     if (result.status === "success") {

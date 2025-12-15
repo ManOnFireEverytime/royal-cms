@@ -218,7 +218,7 @@ const selectedSizes = ref([]);
 const image1 = ref("");
 const images = ref(["", "", "", ""]);
 const showDeleteModal = ref(false);
-const IMAGE_BASE_URL = "https://backend.royalgangchambers.com/products/";
+const IMAGE_BASE_URL = "https://backend.royalgangchamber.com/products/";
 
 // Helper function to get full image URL
 const getImageUrl = (imagePath) => {
@@ -232,7 +232,7 @@ const getImageUrl = (imagePath) => {
 const fetchProduct = async () => {
   try {
     const response = await fetch(
-      `https://backend.royalgangchambers.com/getProduct.php?id=${productId}`
+      `https://backend.royalgangchamber.com/getProduct.php?id=${productId}`
     );
     const result = await response.json();
     if (result.status === "success") {
@@ -267,7 +267,7 @@ const fetchProduct = async () => {
 const fetchCategories = async () => {
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/getCategories.php"
+      "https://backend.royalgangchamber.com/getCategories.php"
     );
     const result = await response.json();
     if (result.status === "success") {
@@ -326,7 +326,7 @@ const updateProduct = async () => {
 
   try {
     const response = await fetch(
-      "https://backend.royalgangchambers.com/updateProduct.php",
+      "https://backend.royalgangchamber.com/updateProduct.php",
       {
         method: "POST",
         headers: {
@@ -356,7 +356,7 @@ const updateProduct = async () => {
 const deleteProduct = async () => {
   try {
     const response = await fetch(
-      `https://backend.royalgangchambers.com/deleteProduct.php`,
+      `https://backend.royalgangchamber.com/deleteProduct.php`,
       {
         method: "POST",
         headers: {

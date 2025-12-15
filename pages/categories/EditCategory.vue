@@ -40,7 +40,7 @@ console.log("Category ID:", categoryId);
 const fetchCategory = async () => {
   try {
     const response = await fetch(
-      `https://backend.royalgangchambers.com/getCategory.php?id=${categoryId}`
+      `https://backend.royalgangchamber.com/getCategory.php?id=${categoryId}`
     );
     const result = await response.json();
 
@@ -64,7 +64,7 @@ const submitCategory = async () => {
 
   try {
     const response = await fetch(
-      `https://backend.royalgangchambers.com/updateCategory.php?id=${categoryId}`,
+      `https://backend.royalgangchamber.com/updateCategory.php?id=${categoryId}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

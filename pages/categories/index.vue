@@ -5,7 +5,7 @@
       <h5>Categories</h5>
       <div class="d-flex align-items-center category-add">
         <NuxtLink :to="{ name: 'categories-AddCategory' }">
-          <button class="d-flex ">
+          <button class="d-flex">
             <p class="me-2">Add Category</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ const fetchCategories = async () => {
     error.value = null;
 
     const response = await fetch(
-      "https://backend.royalgangchambers.com/getCategories.php"
+      "https://backend.royalgangchamber.com/getCategories.php"
     );
     const result = await response.json();
 
@@ -208,7 +208,7 @@ const deleteCategory = async () => {
   try {
     deleteLoading.value = true;
     const response = await fetch(
-      `https://backend.royalgangchambers.com/deleteCategory.php?id=${categoryToDelete.value.id}`,
+      `https://backend.royalgangchamber.com/deleteCategory.php?id=${categoryToDelete.value.id}`,
       { method: "DELETE" }
     );
     const result = await response.json();
@@ -323,7 +323,7 @@ const emit = defineEmits(["category-selected"]);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px
+  gap: 10px;
 }
 .category-add {
   width: 100% !important;
