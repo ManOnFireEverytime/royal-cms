@@ -109,7 +109,7 @@
         </div>
       </NuxtLink>
       <NuxtLink
-        to="/"
+        to="/Orders"
         class="page__tab"
         :class="isActive('Orders') ? 'active' : ''"
       >
