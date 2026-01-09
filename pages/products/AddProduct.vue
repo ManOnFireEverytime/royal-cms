@@ -45,29 +45,7 @@
           placeholder="e.g. Red,Blue,Green,Black"
           required
         />
-        <!-- <div class="range">
-          <p class="mb-4 d-block">Value Range</p>
 
-          <label for="minRange">Minimum: £{{ min }}</label>
-          <input
-            type="range"
-            v-model="min"
-            id="minRange"
-            name="minRange"
-            min="100"
-            max="2000"
-          />
-
-          <label for="maxRange">Maximum: £{{ max }}</label>
-          <input
-            type="range"
-            v-model="max"
-            id="maxRange"
-            name="maxRange"
-            min="100"
-            max="2000"
-          />
-        </div> -->
         <div>
           <table>
             <tr>
@@ -183,6 +161,39 @@
             />
           </div>
         </div>
+
+        <!-- Size Chart Upload Section -->
+        <p class="mt-4">Upload Size Chart (Optional)</p>
+        <label
+          for="file-upload-size-chart"
+          class="custom-file-upload-chart"
+          :style="{
+            background: sizeChartImage ? `url(${sizeChartImage})` : '',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }"
+        >
+          <svg
+            v-if="!sizeChartImage"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
+            />
+          </svg>
+        </label>
+        <input
+          id="file-upload-size-chart"
+          type="file"
+          @change="sizeChartUpload($event)"
+          accept="image/*"
+        />
       </div>
 
       <div class="col-12 mt-5 description-btn">
@@ -215,13 +226,12 @@ const price = ref("");
 const description = ref("");
 const colors = ref("");
 const availableSizes = ["S", "M", "L", "XL", "2XL", "3XL"];
-const selectedSizes = ref([]); // For multi-select dropdown
-// const min = ref(100);
-// const max = ref(100);
+const selectedSizes = ref([]);
 
 // Image handling
 const image1 = ref("");
 const images = ref(["", "", "", ""]);
+const sizeChartImage = ref("");
 
 const fetchCategories = async () => {
   try {
@@ -242,6 +252,7 @@ const fetchCategories = async () => {
 
 // Call fetchCategories on component mount
 onMounted(fetchCategories);
+
 const imageUpload = async (event, index) => {
   const file = event.target.files[0];
   if (!file) return;
@@ -256,6 +267,19 @@ const imageUpload = async (event, index) => {
   } catch (error) {
     console.error("Error uploading image:", error);
     alert("Failed to upload image. Please try again.");
+  }
+};
+
+const sizeChartUpload = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  try {
+    const url = await imgUrl.getUrl(file);
+    sizeChartImage.value = url;
+  } catch (error) {
+    console.error("Error uploading size chart:", error);
+    alert("Failed to upload size chart. Please try again.");
   }
 };
 
@@ -278,10 +302,9 @@ const submitProduct = async () => {
     price: parseFloat(price.value),
     colors: colors.value.trim(),
     sizes: sizesString,
-    // min: parseFloat(min.value),
-    // max: parseFloat(max.value),
     description: description.value,
     images: [image1.value, ...images.value].filter((img) => img),
+    size_chart: sizeChartImage.value || null,
   };
 
   try {
@@ -318,10 +341,9 @@ const resetForm = () => {
   description.value = "";
   colors.value = "";
   selectedSizes.value = [];
-  // min.value = 100;
-  // max.value = 100;
   image1.value = "";
   images.value = ["", "", "", ""];
+  sizeChartImage.value = "";
 };
 </script>
 
@@ -338,14 +360,22 @@ const resetForm = () => {
   justify-content: center;
   margin-bottom: 20px;
 }
+
+.custom-file-upload-chart {
+  border: 2px dashed #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .form__container {
   display: flex;
-
-  /* border: 2px solid green; */
-}
-.left,
-.right {
-  /* width: 0%; */
 }
 
 .custom-file-uploads {
